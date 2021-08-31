@@ -21,7 +21,7 @@
 									active-class="active"
 									class="nav-item"
 								>
-									<a class="nav-link" >Home</a>
+									<a class="nav-link" >{{$t('navbar.home',lang)}}</a>
 								</router-link>
 							
 							<router-link
@@ -30,122 +30,65 @@
 								to="/contact"
 								active-class="active"
 							>
-								<a class="nav-link">Contact</a>
+								<a class="nav-link">{{$t('navbar.contact',lang)}}</a>
 							</router-link>
 							<li>					
 								<div v-if="user!=null"> 
-									<button type="button" class="btn btn-light" :click="logout">
+									<button type="button" class="btn btn-light" v-on:click="logout">
 										<i class="far fa-user"></i>
-										Logout({{user.name}})</button>
+										{{$t('navbar.logout',lang)}} ({{user.name}}) </button>
 								</div>
 								<div v-else>
 									<button type="button" class="btn btn-light"
 									 v-b-modal.loginModal
 													>
 										<i class="far fa-user"></i>
-										Login</button>
+										{{$t('navbar.login',lang)}}</button>
 								</div>
 							</li>
 							<li>
 							<div class="form-check">
-							<select name="locale" id="locale">
-								<option value="TR">TR</option>
-								<option value="EN">EN</option>
+							<select name="locale" @change="changeLang($event)" id="locale">
+								<option value="en">EN</option>
+								<option value="tr">TR</option>
 							</select>
 							</div>
 							</li>
 						</ul>
 					</div>
 			</nav>
-			<b-modal id="loginModal" hide-footer>
-			<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-				<h5 class="modal-title" id="loginModal">Login</h5>
-				<button
-					type="button"
-					class="close"
-					data-dismiss="modal"
-					aria-label="Close"
-				>
-					<span aria-hidden="true">&times;</span>
-				</button>
-				</div>
-				<div class="modal-body">
-					<div class="form-group">
-					<label for="email">Email address</label>
-					<input type="email" v-model="email4placeholder" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-						<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-						</div>
-						<div class="form-group">
-						<label for="password">Password</label>
-						<input type="password" v-model="password4placeholder" class="form-control" id="password" placeholder="Password">
-						</div>
-						<div class="alert alert-danger" role="alert" v-if="error!=null">
-						{{error}}
-					</div>
-					</div>
-					<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal" @click="closeLoginModal">
-						Close
-					</button>
-					<button type="button" class="btn btn-primary" @click="login">Login</button>
-					</div>
-				</div>
-				</div>
-			</b-modal>
+			<app-login-modal></app-login-modal>
     </div>
 </template>
 <script>
-//import loginModal from "./LoginModal.vue"
+import loginModal from "./LoginModal.vue"
+import {mapGetters} from "vuex";
 export default {
 	data(){
 		return {
 			logourl : process.env.VUE_APP_BASE_URL_SRC+"/assets/img/logo.png",
-			user:this.$store.state.user,
-			email:"kasim-yilmaz@hotmail.com",
-			password:"123456",
-			error:null,
 			
 		}
 	},
 	components:{
-		//appLoginModal:loginModal
+		appLoginModal:loginModal
 	},
   	methods:
 	{
-		closeLoginModal:function(){
-			this.$bvModal.hide('loginModal');
-		},
-		login:function(){
-
-			this.error=null;
-			let result = this.$services.Auth.checkUser(this.email,this.password);
-			console.log(result);
-			if(result.status){
-				
-				this.$store.commit("setUser",{
-				name:result.user.name,
-				email:result.user.email,
-				});  
-			this.setUser();
-			this.closeLoginModal();
-			//this.$router.go(this.$router.currentRoute);
-			}else
-			{
-			this.error =result.error;
-			}	
-		},
 		logout:function(){
-			this.$store.state.user=null;
-			this.setUser();
+			this.$store.commit('setUser',null);
 		},
-		setUser(){
-			this.user = this.$store.state.user;
+		changeLang:function(event)
+		{
+			this.$store.commit('setLang',event.target.value)
 		}
 	},
 	computed:{
-		user:this.$store.state.user
+		...mapGetters({
+			user:'getUser',
+			lang:'getLang'
+		})
+
 	}
 }
 </script>

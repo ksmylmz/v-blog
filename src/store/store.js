@@ -6,15 +6,24 @@ Vue.use(Vuex)
 export const _store = new Vuex.Store({
   state:{
     user:null,
-    islogin:false,
-    loginModal:false,
+    lang:'en'
   },
-
-  mutations:{
-    setUser(user)
-    {
-      this.state.user.name=user.name;
-      this.state.user.name.email = user.email;
+  getters:{
+    getUser(state){
+      return state.user
+    },
+    getLang(state){
+      return state.lang
     }
+  },
+  mutations:{
+    setUser(state,user)
+    {
+       state.user = user
+    },
+    setLang(state,lang)
+    {
+       state.lang = lang
+    },
   }
 })

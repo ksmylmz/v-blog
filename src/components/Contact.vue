@@ -4,24 +4,36 @@
     <section id="categories-area" class="section-py">
         			<div class="container">
 				<div class="cat-title">
-					<h2>Contact Us</h2>
+					<h2>{{ $t('contact.contactus',lang) }}</h2>
 				</div>
                         <div class="row">
                         <div class="col-md-8">
                             <form action="/post" method="post">
-                                <input class="form-control" name="name" v-model="name" placeholder="Name..." /><br />
-                                <input class="form-control" name="phone" placeholder="Phone..." /><br />
-                                <input class="form-control" v-model="email" name="email" placeholder="E-mail..." /><br />
-                                <textarea class="form-control" name="text" placeholder="How can we help you?" style="height:150px;"></textarea><br />
-                                <input class="btn btn-primary" type="submit" value="Send" /><br /><br />
+                                <input class="form-control" name="name" :value="user!=null?user.name:''"  :placeholder="$t('contact.name',lang)" /><br />
+                                <input class="form-control" name="phone"
+                                :placeholder="$t('contact.phone',lang)"
+                                
+                                 @blurr="$v.phoneinput.dirty()"
+                                 :class="{'is-invalid':!$v.phoneinput.integer}"
+                                 /><br />
+                                <input class="form-control" type="text"
+                                :value="user!=null?user.email:''" 
+                                 name="email" 
+                                 @blurr="$v.emailinput.dirty()"
+                                :placeholder="$t('contact.email',lang)"
+                                :class="{'is-invalid':!$v.emailinput.email}"
+                                 />
+                                 <br />
+                                <textarea class="form-control" name="text" :placeholder="$t('contact.howcan',lang)"  style="height:150px;"></textarea><br />
+                                <input class="btn btn-primary" type="submit" :value="$t('contact.send',lang)" /><br /><br />
                             </form>
                         </div>
                         <div class="col-md-4">
-                            <b>Customer service:</b> <br />
+                            <b> {{ $t('contact.customersercvice',lang) }} :</b> <br />
                             Phone: +1 111 11 11<br />
                             E-mail: <a href="mailto:support@v-conmerce.com">support@v-commerce.com</a><br />
                             <br /><br />
-                            <b>Headquarter:</b><br />
+                            <b>{{ $t('contact.Headquarter',lang) }} :</b><br />
                             Company Inc, <br />
                             Las vegas street 201<br />
                             55001 Nevada, USA<br />
@@ -51,17 +63,44 @@
 import Header from "./template/Header"
 import Footer from "./template/footer"
 import Footerarea from "./template/footerarea"
+
+import {mapGetters} from "vuex"; 
+import { email,required,integer }  from 'vuelidate/lib/validators';
 export default {
     data(){
         return {
-        name:this.$store.state.user===null ? "":this.$store.state.user.name,
-        email:this.$store.state.user===null ? "":this.$store.state.user.email,
+            emailinput:null,
+            phoneinput:null
         }
     },
     components:{
         appHeader:Header,
         appFooter:Footer,
         appFooterarea:Footerarea
+    },
+    computed:{
+        ...mapGetters({
+            user:'getUser',
+            lang:'getLang'
+        }),
+        email:function(){
+            this.user===null?"":user.email
+        },
+        name:function(){
+            this.user===null?"":user.email
+        },
+    },
+    validations(){
+        return{
+            emailinput:{email},
+            phoneinput:{integer}
+        }
+    },
+    methods: {
+        getStatusClass(status)
+        {
+            return status?'valid':'error'
+        }
     }
 }
 </script>

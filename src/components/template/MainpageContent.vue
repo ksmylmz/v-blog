@@ -4,7 +4,7 @@
 	 <div id="blog" class="row"> 
                 
                  <div class="col-md-10 blogShort">
-                     <h1>Title 1</h1>
+                     <h1>{{$t('mainpage.title',lang)}} 1</h1>
                            
                         
                      <article><p>
@@ -17,7 +17,7 @@
                      <a class="btn btn-blog pull-right marginBottom10" href="#">READ MORE</a> 
                  </div>
                   <div class="col-md-10 blogShort">
-                     <h1>Title 2</h1>
+                     <h1>{{$t('mainpage.title',lang)}} 2</h1>
                      <article><p>
                          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
                          ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only 
@@ -29,7 +29,7 @@
                  </div>
                  
                   <div class="col-md-10 blogShort">
-                     <h1>Title 3</h1>
+                     <h1>{{$t('mainpage.title',lang)}} 3</h1>
                      <article><p>
                          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
                          ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only 
@@ -45,3 +45,13 @@
 </div>
 </section>
 </template>
+<script>
+import {mapGetters} from "vuex";
+export default {
+	computed:{
+		...mapGetters({
+			lang:'getLang'
+		})
+    }
+}
+</script>

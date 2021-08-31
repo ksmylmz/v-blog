@@ -1,0 +1,25 @@
+{
+    "navbar":{
+        "home":"AnaSayfa",
+        "contact":"İletişim",
+        "login":"Giriş",
+        "logout":"Çıkış",
+        "close":"Kapat",
+        "password":"Şifre",
+        "email":"E-mail"
+    },
+    "mainpage":
+    {
+        "title":"Başlık"
+    },
+    "contact":{
+        "contactus":"İletişime Geç",
+        "customersercvice":"Müşteri Hizmetleri",
+        "Headquarter":"Merkez Ofis",
+        "name":"İsim",
+        "phone":"Telefon",
+        "email":"Email",
+        "howcan":"Nasıl Yardımcı olabilirim?",
+        "send":"Gönder"
+    }
+}

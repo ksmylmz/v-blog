@@ -1,0 +1,25 @@
+{
+    "navbar":{
+        "home":"Home",
+        "contact":"Contact",
+        "login":"Login",
+        "logout":"Logout",
+        "close":"Close",
+        "password":"Password",
+        "email":"E-mail"
+    },
+    "mainpage":
+    {
+        "title":"Title"
+    },
+    "contact":{
+        "contactus":"Contact Us",
+        "customersercvice":"Customer service",
+        "Headquarter":"Headquarter",
+        "name":"Name",
+        "phone":"Phone",
+        "email":"Email",
+        "howcan":"How can we help you?",
+        "send":"Send"
+    }
+}
