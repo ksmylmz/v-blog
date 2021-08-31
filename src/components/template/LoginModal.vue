@@ -1,6 +1,6 @@
 <template>
-  <b-modal id="loginModal">
-    <div class="modal-dialog" role="document">
+  <b-modal id="loginModal" hide-footer>
+    <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="loginModal">Login</h5>
@@ -61,6 +61,7 @@ export default {
              name:result.user.name,
               email:result.user.email,
            };   
+           this.$bvModal.hide('loginModal');
          }else
          {
            this.error =result.error;
