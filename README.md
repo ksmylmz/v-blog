@@ -47,3 +47,10 @@ npm run dev
 
 <img src="https://raw.githubusercontent.com/ksmylmz/v-blog/master/src/assets/img/form-validation.png" width="700"/>
 
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+<img src="https://raw.githubusercontent.com/ksmylmz/v-blog/master/src/assets/img/result.png" width="700"/>
