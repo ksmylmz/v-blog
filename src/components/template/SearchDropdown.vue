@@ -5,7 +5,8 @@
      class="dropdown-input form-control"
       type="text" 
       :placeholder="$t('contact.country',lang)"
-      @keyup="showDropdown=true"
+      @keyup="showDropdown=true;"
+
        />
        
     <div v-if="showDropdown" class="dropdown-list">
@@ -21,15 +22,9 @@ import {mapGetters} from "vuex";
 export default {
     data(){
         return {
-            countryList:[],
             inputValue:'',
             showDropdown:false            
         }
-    },
-    created:function()
-    {
-        this.countryList = this.$services.Requirements.getCountryList();
-        console.log(this.countryList);
     },
     methods:{
         itemVisible:function(item)
@@ -41,12 +36,15 @@ export default {
         selectCountry(country){
            this.inputValue = country;
             this.showDropdown=false;
-        }
+        },
     },
     computed:{
         ...mapGetters({
             lang:'getLang'
         }),
-    }
+        countryList:function(){
+            return this.$services.Requirements.getCountryList(this.lang);
+        }
+    },
 }
 </script>
