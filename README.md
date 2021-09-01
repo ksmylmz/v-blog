@@ -63,4 +63,4 @@ npm run dev
 <br/>
 <br/>
 
-<img src="https://raw.githubusercontent.com/ksmylmz/v-blog/master/src/assets/img/result.png1" width="700"/>
+<img src="https://raw.githubusercontent.com/ksmylmz/v-blog/master/src/assets/img/result1.png" width="700"/>
