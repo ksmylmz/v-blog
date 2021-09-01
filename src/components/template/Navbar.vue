@@ -1,64 +1,73 @@
 <template>
-	<div class="container">
-    				<nav class="navbar navbar-expand-lg navbar-light bg-white">
-					<router-link to="/" tag="a" class="navbar-brand"><img :src="logourl" alt=""/></router-link>
-					<button
-						class="navbar-toggler"
-						type="button"
-						data-toggle="collapse"
-						data-target="#navbarSupportedContent"
-						aria-controls="navbarSupportedContent"
-						aria-expanded="false"
-						aria-label="Toggle navigation"
-					>
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav ml-auto">
+	<div class="container" v-if="!ismobile()">
+		<div class="row">
+		<router-link to="/" tag="a" class="navbar-brand col-4"><img :src="logourl" alt=""/></router-link>
+						<nav class="navbar navbar-expand-lg navbar-light bg-white col-6" >
+						
+						<button
+							class="navbar-toggler ml-auto"
+							type="button"
+							data-toggle="collapse"
+							data-target="#navbarSupportedContent"
+							aria-controls="navbarSupportedContent"
+							aria-expanded="false"
+							aria-label="Toggle navigation"
+						>
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ml-auto">
+									<router-link
+										tag="li"
+										to="/"
+										active-class="active"
+										class="nav-item"
+									>									
+										<a class="nav-link" ><i class="fa fa-home"></i> {{$t('navbar.home',lang)}}</a>
+									</router-link>
+								
 								<router-link
-									tag="li"
-									to="/"
-									active-class="active"
 									class="nav-item"
+									tag="li"
+									to="/contact"
+									active-class=""
 								>
-									<a class="nav-link" >{{$t('navbar.home',lang)}}</a>
+									<a class="nav-link"><i class="fa fa-paper-plane"></i> {{$t('navbar.contact',lang)}}</a>
 								</router-link>
-							
-							<router-link
-								class="nav-item"
-								tag="li"
-								to="/contact"
-								active-class="active"
-							>
-								<a class="nav-link">{{$t('navbar.contact',lang)}}</a>
-							</router-link>
-							<li>					
-								<div v-if="user!=null"> 
-									<button type="button" class="btn btn-light" v-on:click="logout">
+								<li v-if="user!=null" class="nav-item dropdown">	
+										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<i class="far fa-user"></i>
-										{{$t('navbar.logout',lang)}} ({{user.name}}) </button>
-								</div>
-								<div v-else>
-									<button type="button" class="btn btn-light"
-									 v-b-modal.loginModal
-													>
-										<i class="far fa-user"></i>
-										{{$t('navbar.login',lang)}}</button>
-								</div>
-							</li>
-							<li>
-							<div class="form-check">
-							<select name="locale" @change="changeLang($event)" id="locale">
-								<option value="en">EN</option>
-								<option value="tr">TR</option>
-							</select>
-							</div>
-							</li>
-						</ul>
-					</div>
-			</nav>
-			<app-login-modal></app-login-modal>
-    </div>
+										</a>
+										<div class="dropdown-menu" aria-labelledby="navbarDropdownUser">
+										<a class="dropdown-item" >{{user.email}} </a>
+										<a class="dropdown-item" >{{user.name}} </a>
+										<a class="dropdown-item"  v-on:click="logout">{{$t('navbar.logout',lang)}}</a>
+										</div>				
+				
+								</li>
+								<li v-else>
+										<a type="button" class="nav-link"
+										v-b-modal.loginModal
+														>
+											<i class="far fa-user"></i>
+											{{$t('navbar.login',lang)}}</a>
+								</li>
+
+								<li class="nav-item dropdown" >
+									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLang" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="fa fa-globe"></i>
+									</a>
+									<div class="dropdown-menu" aria-labelledby="navbarDropdownLang">
+									<a class="dropdown-item" @click="changeLang('en')">EN</a>
+									<a class="dropdown-item" @click="changeLang('tr')">TR</a>
+									</div>	
+								</li>
+							</ul>
+						</div>
+				</nav>
+				<app-login-modal></app-login-modal>
+		</div>
+	</div>
 </template>
 <script>
 import loginModal from "./LoginModal.vue"
@@ -78,9 +87,13 @@ export default {
 		logout:function(){
 			this.$store.commit('setUser',null);
 		},
-		changeLang:function(event)
+		changeLang:function(lang)
 		{
-			this.$store.commit('setLang',event.target.value)
+			this.$store.commit('setLang',lang)
+		},
+		ismobile()
+		{
+			return window.innerWidth<760?true:false;
 		}
 	},
 	computed:{

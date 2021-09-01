@@ -64,6 +64,8 @@ body {
 }
 .nav-link {
 	margin-left: 24px;
+	text-align: center;
+	
 }
 /*************** Start Hero-area ***************/
 .carousel {

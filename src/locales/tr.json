@@ -7,6 +7,7 @@
         "close":"Kapat",
         "password":"Şifre",
         "email":"E-mail"
+
     },
     "mainpage":
     {
@@ -20,6 +21,7 @@
         "phone":"Telefon",
         "email":"Email",
         "howcan":"Nasıl Yardımcı olabilirim?",
-        "send":"Gönder"
+        "send":"Gönder",
+        "country":"Ülke Seçimi"
     }
 }

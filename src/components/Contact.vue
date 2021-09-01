@@ -24,6 +24,8 @@
                                 v-model.trim="$v.emailinput.$model"
                                  />
                                  <br />
+                                <app-search-dropdown></app-search-dropdown>
+                                <br/>
                                 <textarea class="form-control" name="text" :placeholder="$t('contact.howcan',lang)"  style="height:150px;"></textarea><br />
                                 <input class="btn btn-primary" type="submit" :value="$t('contact.send',lang)" /><br /><br />
                             </form>
@@ -62,6 +64,7 @@
 import Header from "./template/Header"
 import Footer from "./template/footer"
 import Footerarea from "./template/footerarea"
+import SearchDropdown from "./template/SearchDropdown"
 
 import {mapGetters} from "vuex"; 
 import { email,required,integer }  from 'vuelidate/lib/validators';
@@ -69,13 +72,14 @@ export default {
     data(){
         return {
             emailinput:null,
-            phoneinput:null
+            phoneinput:null,
         }
     },
     components:{
         appHeader:Header,
         appFooter:Footer,
-        appFooterarea:Footerarea
+        appFooterarea:Footerarea,
+        appSearchDropdown:SearchDropdown
     },
     computed:{
         ...mapGetters({
@@ -101,6 +105,7 @@ export default {
             return status?'valid':'error'
         }
     },
+
 }
                                
 </script>

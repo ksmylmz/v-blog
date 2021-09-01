@@ -7,6 +7,7 @@
         "close":"Close",
         "password":"Password",
         "email":"E-mail"
+
     },
     "mainpage":
     {
@@ -20,6 +21,7 @@
         "phone":"Phone",
         "email":"Email",
         "howcan":"How can we help you?",
-        "send":"Send"
+        "send":"Send",
+        "country":"Country Select"
     }
 }
