@@ -20,7 +20,7 @@ npm run dev
 
 ## Modal Login form
 
-<img src="https://raw.githubusercontent.com/ksmylmz/v-blog/master/src/assets/img/loginmodal.png" width="700"/>
+<img src="https://raw.githubusercontent.com/ksmylmz/v-blog/master/src/assets/img/loginmodal1.png" width="700"/>
 
 <br/>
 <br/>
@@ -28,7 +28,7 @@ npm run dev
 
 ## State refresh without reload 
 
-<img src="https://raw.githubusercontent.com/ksmylmz/v-blog/master/src/assets/img/afterloging.png" width="700"/>
+<img src="https://raw.githubusercontent.com/ksmylmz/v-blog/master/src/assets/img/afterloging1.png" width="700"/>
 
 <br/>
 <br/>
@@ -37,7 +37,7 @@ npm run dev
 
 # Localization and changing strings without reload
 
-<img src="https://raw.githubusercontent.com/ksmylmz/v-blog/master/src/assets/img/localization.png" width="700"/>
+<img src="https://raw.githubusercontent.com/ksmylmz/v-blog/master/src/assets/img/localization1.png" width="700"/>
 
 <br/>
 <br/>
@@ -45,7 +45,7 @@ npm run dev
 
 # Form Validations
 
-<img src="https://raw.githubusercontent.com/ksmylmz/v-blog/master/src/assets/img/form-validation.png" width="700"/>
+<img src="https://raw.githubusercontent.com/ksmylmz/v-blog/master/src/assets/img/form-validation1.png" width="700"/>
 
 
 <br/>
@@ -55,7 +55,7 @@ npm run dev
 
 # Country Search
 
-<img src="https://raw.githubusercontent.com/ksmylmz/v-blog/master/src/assets/img/country-search.png" width="700"/>
+<img src="https://raw.githubusercontent.com/ksmylmz/v-blog/master/src/assets/img/country-search1.png" width="700"/>
 
 
 <br/>
@@ -63,4 +63,4 @@ npm run dev
 <br/>
 <br/>
 
-<img src="https://raw.githubusercontent.com/ksmylmz/v-blog/master/src/assets/img/result.png" width="700"/>
+<img src="https://raw.githubusercontent.com/ksmylmz/v-blog/master/src/assets/img/result.png1" width="700"/>
