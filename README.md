@@ -13,10 +13,10 @@ npm install
 npm run dev
 ```
 
-1- Bootstrap used for basic desing 
-1- Used vuex for state management
-3- Used vue-i18n and vuex used for localization
-4- Used vuevalidate for form validation
+### 1- Bootstrap used for basic desing 
+### 2- Used vuex for state management
+### 3- Used vue-i18n and vuex used for localization
+### 4- Used vuevalidate for form validation
 
 ## Modal Login form
 
