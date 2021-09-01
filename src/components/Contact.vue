@@ -12,16 +12,16 @@
                                 <input class="form-control" name="name" :value="user!=null?user.name:''"  :placeholder="$t('contact.name',lang)" /><br />
                                 <input class="form-control" name="phone"
                                 :placeholder="$t('contact.phone',lang)"
-                                
-                                 @blurr="$v.phoneinput.dirty()"
+                                @blurr="$v.phoneinput.touch()"
+                                 v-model.trim="$v.phoneinput.$model"
                                  :class="{'is-invalid':!$v.phoneinput.integer}"
                                  /><br />
                                 <input class="form-control" type="text"
-                                :value="user!=null?user.email:''" 
-                                 name="email" 
-                                 @blurr="$v.emailinput.dirty()"
                                 :placeholder="$t('contact.email',lang)"
+                                 name="email" 
+                                @blurr="$v.phoneinput.touch()"
                                 :class="{'is-invalid':!$v.emailinput.email}"
+                                v-model.trim="$v.emailinput.$model"
                                  />
                                  <br />
                                 <textarea class="form-control" name="text" :placeholder="$t('contact.howcan',lang)"  style="height:150px;"></textarea><br />
@@ -52,7 +52,6 @@
 
                         </div>
                         </div>
-
 			</div>
     </section>  
     <app-footer></app-footer>
@@ -101,6 +100,7 @@ export default {
         {
             return status?'valid':'error'
         }
-    }
+    },
 }
+                               
 </script>
