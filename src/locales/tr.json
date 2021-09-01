@@ -24,14 +24,4 @@
         "send":"Gönder",
         "country":"Ülke Seçimi"
     },
-    "countryList":[
-        { "id": "TR", "name": "Türkiye" },
-        { "id": "US", "name": "Amerika Birleşik Devletleri" },
-        { "id": "GB", "name": "Birleşik Krallık" },
-        { "id": "DE", "name": "Almanya" },
-        { "id": "SE", "name": "İsviçre" },
-        { "id": "KE", "name": "Kenya" },
-        { "id": "BR", "name": "Brezilya" },
-        { "id": "ZW", "name": "Zimbabwe" }
-    ]
 }
