@@ -54,16 +54,7 @@
 											<i class="far fa-user"></i>
 											{{$t('navbar.login',lang)}}</a>
 								</li>
-
-								<li class="nav-item dropdown" >
-									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLang" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="fa fa-globe"></i>
-									</a>
-									<div class="dropdown-menu" aria-labelledby="navbarDropdownLang">
-									<a class="dropdown-item" @click="changeLang('en')">EN</a>
-									<a class="dropdown-item" @click="changeLang('tr')">TR</a>
-									</div>	
-								</li>
+								<app-language></app-language>
 							</ul>
 						</div>
 				</nav>
@@ -73,6 +64,7 @@
 </template>
 <script>
 import loginModal from "./LoginModal.vue"
+import language from "./language.vue"
 import {mapGetters} from "vuex";
 export default {
 	data(){
@@ -82,17 +74,15 @@ export default {
 		}
 	},
 	components:{
-		appLoginModal:loginModal
+		appLoginModal:loginModal,
+		appLanguage:language
 	},
   	methods:
 	{
 		logout:function(){
 			this.$store.commit('setUser',null);
 		},
-		changeLang:function(lang)
-		{
-			this.$store.commit('setLang',lang)
-		},
+
 		ismobile()
 		{
 			return window.innerWidth<760?true:false;

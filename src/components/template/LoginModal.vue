@@ -32,7 +32,12 @@
 						{{$t('navbar.close',lang)}}
 					</button>
 					<button type="button" class="btn btn-primary" @click="login">{{$t('navbar.login',lang)}}</button>
+					<br>
+					<div class="float-right">
+						<app-language></app-language>
 					</div>
+					</div>
+
 				</div>
 				</div>
 			</b-modal>
@@ -40,6 +45,8 @@
 
 <script>
 import {mapGetters} from "vuex";
+import language from "./language.vue";
+
 export default {
   data(){
     return {
@@ -48,6 +55,9 @@ export default {
 			error:null,
     }
   },
+	components:{
+		appLanguage:language
+	},
   methods:
 	{
     closeLoginModal:function(){
@@ -80,8 +90,12 @@ export default {
 }
 </script>
 <style scoped>
-.mymodal
-{
-
-}
+ li 
+ {
+   list-style-type: none; 
+ }
+ li a, li a:hover 
+ {
+	 color: rgb(0 0 0 / 50%) !important;
+ }
 </style>
