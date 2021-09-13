@@ -23,5 +23,10 @@
         "howcan":"How can we help you?",
         "send":"Send",
         "country":"Country Select"
+    },
+    "routing_list":{
+        "anasayfa":"V-Blog",
+        "home":"V-Blog",
+        "contact":"Contact Us"
     }
 }

@@ -23,5 +23,10 @@
         "howcan":"Nasıl Yardımcı olabilirim?",
         "send":"Gönder",
         "country":"Ülke Seçimi"
+    },
+    "routing_list":{
+        "anasayfa":"V-Blog",
+        "home":"V-Blog",
+        "contact":"İletişim"
     }
 }

@@ -4,7 +4,7 @@
     <section id="categories-area" class="section-py">
         			<div class="container">
 				<div class="cat-title">
-					<h2>{{ $t('contact.contactus',lang) }}</h2>
+					<h2>{{ $t(currentPage,lang) }}</h2>
 				</div>
                         <div class="row">
                         <div class="col-md-8">
@@ -92,6 +92,9 @@ export default {
         name:function(){
             this.user===null?"":user.email
         },
+        currentPage:function(){
+            return 'routing_list.'+this.$route.name;
+        }  
     },
     validations(){
         return{

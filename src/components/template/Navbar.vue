@@ -1,8 +1,10 @@
 <template>
 	<div class="container" v-if="!ismobile()">
 		<div class="row">
-		<router-link to="/" tag="a" class="navbar-brand col-4"><img :src="logourl" alt=""/></router-link>
-						<nav class="navbar navbar-expand-lg navbar-light bg-white col-6" >
+		<router-link to="/" tag="a" class="navbar-brand col-3"><img :src="logourl" alt=""/>
+		</router-link>
+		
+						<nav class="navbar navbar-expand-lg navbar-light bg-white col-7" >
 						
 						<button
 							class="navbar-toggler ml-auto"
