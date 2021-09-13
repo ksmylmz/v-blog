@@ -6,7 +6,7 @@
       type="text" 
       :placeholder="$t('contact.country',lang)"
       @keyup="showDropdown=true;"
-
+   
        />
        
     <div v-if="showDropdown" class="dropdown-list">
@@ -35,6 +35,7 @@ export default {
         },
         selectCountry(country){
            this.inputValue = country;
+           	this.$store.commit('setSelectedCountry',country);
             this.showDropdown=false;
         },
     },

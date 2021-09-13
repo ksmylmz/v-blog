@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export const _store = new Vuex.Store({
   state:{
     user:null,
-    lang:'en'
+    lang:'en',
+    selectedCountry:''
   },
   getters:{
     getUser(state){
@@ -14,6 +15,9 @@ export const _store = new Vuex.Store({
     },
     getLang(state){
       return state.lang
+    },
+    getSelectedCountry(state){
+      return state.selectedCountry
     }
   },
   mutations:{
@@ -24,6 +28,10 @@ export const _store = new Vuex.Store({
     setLang(state,lang)
     {
        state.lang = lang
+    },
+    setSelectedCountry(state,country)
+    {
+       state.selectedCountry = country
     },
   }
 })

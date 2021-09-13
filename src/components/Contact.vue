@@ -8,8 +8,8 @@
 				</div>
                         <div class="row">
                         <div class="col-md-8">
-                            <form action="/post" method="post">
-                                <input class="form-control" name="name" :value="user!=null?user.name:''"  :placeholder="$t('contact.name',lang)" /><br />
+                            <form ref="contactform">
+                                <input class="form-control" ref="input_name" name="name" :value="user!=null?user.name:''"    :placeholder="$t('contact.name',lang)" /><br />
                                 <input class="form-control" name="phone"
                                 :placeholder="$t('contact.phone',lang)"
                                 @blurr="$v.phoneinput.touch()"
@@ -26,8 +26,8 @@
                                  <br />
                                 <app-search-dropdown></app-search-dropdown>
                                 <br/>
-                                <textarea class="form-control" name="text" :placeholder="$t('contact.howcan',lang)"  style="height:150px;"></textarea><br />
-                                <input class="btn btn-primary" type="submit" :value="$t('contact.send',lang)" /><br /><br />
+                                <textarea class="form-control" name="text" :placeholder="$t('contact.howcan',lang)"  style="height:150px;" v-model="contactContent"></textarea><br />
+                                <input class="btn btn-primary" type="button" :value="$t('contact.send',lang)"  @click="postForm"/><br /><br />
                             </form>
                         </div>
                         <div class="col-md-4">
@@ -73,6 +73,7 @@ export default {
         return {
             emailinput:null,
             phoneinput:null,
+            contactContent:''
         }
     },
     components:{
@@ -84,13 +85,14 @@ export default {
     computed:{
         ...mapGetters({
             user:'getUser',
-            lang:'getLang'
+            lang:'getLang',
+            selectedCountry:'getSelectedCountry'
         }),
         email:function(){
             this.user===null?"":user.email
         },
         name:function(){
-            this.user===null?"":user.email
+            this.user===null?"":user.name
         },
         currentPage:function(){
             return 'routing_list.'+this.$route.name;
@@ -106,6 +108,16 @@ export default {
         getStatusClass(status)
         {
             return status?'valid':'error'
+        },
+        postForm()
+        {
+            console.log({
+                	"name": this.$refs.input_name.value,
+                    "email": this.emailinput,
+                    "phonenumber": this.phoneinput,
+                    "country_code": this.selectedCountry,
+                    "text": this.contactContent
+            });
         }
     },
 
